@@ -6,12 +6,12 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/employees</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/mangas</property>
         <property name="connection.username">r2d2</property>
         <property name="connection.password">azertyui</property>
         <property name="show_sql">true</property>
 
-        <mapping class="com.example.apiprojet.model.Employee" />
+        <mapping class="com.example.apiprojet.model.Manga" />
 
     </session-factory>
 </hibernate-configuration>

@@ -1,13 +1,10 @@
 package com.example.apiprojet;
 
-import com.example.apiprojet.model.Employee;
-import com.example.apiprojet.service.EmployeeService;
+import com.example.apiprojet.service.MangaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.List;
 
 //test
 @SpringBootApplication
@@ -18,11 +15,11 @@ public class ApiProjetApplication implements CommandLineRunner {
     }
 
     @Autowired
-    private EmployeeService employeeService;
+    private MangaService mangaService;
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println(employeeService.listEmployees());
-        System.out.println(employeeService.getEmployee(1L));
+        System.out.println(mangaService.listMangas());
+        System.out.println(mangaService.getManga(1L));
     }
 }
