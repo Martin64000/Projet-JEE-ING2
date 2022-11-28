@@ -1,14 +1,11 @@
-DROP TABLE IF EXISTS employees;
- 
-CREATE TABLE employees (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  first_name VARCHAR(250) NOT NULL,
-  last_name VARCHAR(250) NOT NULL,
-  mail VARCHAR(250) NOT NULL,
-  password VARCHAR(250) NOT NULL
-);
- 
-INSERT INTO employees (first_name, last_name, mail, password) VALUES
-  ('Laurent', 'GINA', 'laurentgina@mail.com', 'laurent'),
-  ('Sophie', 'FONCEK', 'sophiefoncek@mail.com', 'sophie'),
-  ('Agathe', 'FEELING', 'agathefeeling@mail.com', 'agathe');
+INSERT INTO mangas (title, author, number, gender, editor) VALUES
+  ('One Piece', 'Eichiro Oda', '01', 'Shonnen', 'Glénat'),
+  ('One Piece', 'Eichiro Oda', '02', 'Shonnen', 'Glénat'),
+  ('One Piece', 'Eichiro Oda', '03', 'Shonnen', 'Glénat'),
+  ('L attaque des titans', 'Hajime Isayama', '01', 'Seinnen', 'Pika'),
+  ('L attaque des titans', 'Hajime Isayama', '02', 'Seinnen', 'Pika'),
+  ('My Hero Academia', 'Kohei Horikoshi', '01', 'Shonnen', 'Ki-oon'),
+  ('My Hero Academia', 'Kohei Horikoshi', '02', 'Shonnen', 'Ki-oon'),
+  ('Naruto', 'Masashi Kishimoto', '01', 'Shonnen', 'Kana'),
+  ('Naruto', 'Masashi Kishimoto', '02', 'Shonnen', 'Kana'),
+  ('Naruto', 'Masashi Kishimoto', '03', 'Shonnen', 'Kana');
