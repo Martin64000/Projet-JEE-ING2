@@ -1,0 +1,67 @@
+
+  /* Retirer les pastilles avant les items des listes */
+  .menu ul {
+    list-style: none;
+  }
+  
+  .menu  a {
+    color: #ff9a26;
+    font-size: 32px;
+    text-decoration: none;
+    
+  }
+  
+  /* Place notre menu */
+  .menu-label,
+  .menu-cb {
+    cursor: pointer;
+    appearance: none;
+    position: fixed;
+    height: 32px;
+    width: 32px;
+    top: 190px;
+    left: 20px;
+    z-index: 4;
+  }
+  
+  /* Place le coté déroulant du menu */
+  .menu-nav {
+    position: fixed;
+    top: 158px;
+    left: 0px;
+    height: 100%;
+    width: 90%;
+    max-width: 200px;
+    padding-top: 50px;
+    /* text-align: left; */
+    background: grey;
+    z-index: 2;
+    transform: translateX(-100%);
+    transition: transform 0.5s linear;
+  }
+
+  .menu-nav ul {
+    padding-left: 5px;
+  } 
+
+  .menu-item {
+    padding: .5em 15px;
+    border-top: 1px solid #ccc;
+    font-style: italic;
+  }
+  
+  /*  Deroule le menu lors la checkbox est valide */
+  .menu-cb:checked ~ .menu-nav {
+    transform: translateX(0);
+  }
+  
+  /* correspond a notre page creer avec le css pour désactiver le menu lorsque l'on clique sur cette page */
+  .menu-cote {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  

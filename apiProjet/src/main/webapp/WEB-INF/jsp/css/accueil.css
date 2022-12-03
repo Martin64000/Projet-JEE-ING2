@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#Menu ul {
+  margin-left: 25%;
+}
+
+h3 {
+  margin: 0;
+}
+
+#Contenuprincipal {
+  position: relative;
+  background-color: #3498db;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 95%;
+  margin-left: 5%;
+
+}
+
+/* CSS FOOTER  */
+
+#fo{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #B8B0B0;
+  height: 60px;
+  width: 100%;
+  position:relative;
+}
+
+#fo p {
+  color: black;
+  font-weight: bold;
+  position: relative;
+  top: 18px;
+}

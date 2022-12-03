@@ -1,0 +1,108 @@
+/* CSS BANNIERE  */
+
+#banner1 {
+    display: inline-block;
+    background-color: #762222;
+    height: 60px;
+    width: 100%;
+  }
+  
+  #banner1 h2 {
+    font-weight: bold;
+    text-align: center;
+  }
+
+#banner2 {
+    display: block;
+    background-color: #762222;
+    height: 30px;
+    width: 100%;
+  }
+
+
+/* CSS MENU DEROULANT */
+
+.CentralMenu{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    width: 100%;
+    background-color: #B67332;
+}
+.CentralMenu > ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* retablir la hauteur du menu */
+.CentralMenu > ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+.CentralMenu > ul > li {
+    float: left;
+    position: relative;
+}
+
+.CentralMenu > ul > li > a {
+    padding: 20px 30px;
+    color: #CACACA;
+    font-weight: bold;
+}
+
+.MenuDeroulant {
+    align-items: center;
+    display: flex   ;
+}
+
+
+
+.CentralMenu li {
+    list-style-type: none;
+}
+
+.SousMenu {
+    display: none;
+    background-color: RGB(250, 215, 100);
+}
+
+.CentralMenu a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.CentralMenu li:hover .SousMenu {
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    padding: 0px;
+    z-index: 6;
+}
+
+.SousMenu li {
+    border-bottom: 1px solid #CACACA;
+}
+
+.SousMenu li a {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 15px 30px;
+    font-size: 17px;
+    color: #585858;
+    width: 270px;
+}
+
+
+.MenuDeroulant > li:hover {
+    background-color: #EC781D;
+}
+
+.MenuDeroulant > li:hover > a{
+    text-decoration: underline;
+}
+
+.SousMenu > li:hover > a {
+    background-color: #762222;
+}
