@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
     </properties>
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -49,12 +50,11 @@
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <version>10.1.1</version>
         </dependency>
-        <dependency>
+
+         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-
         </dependency>
     </dependencies>
 
