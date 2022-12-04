@@ -31,4 +31,28 @@ public class MangaController {
         return "mangas";
     }
 
+    @GetMapping("/caracteristiques")
+    public String modifMangas(Model model , HttpSession session) {
+        List<Manga> listMangas = service.listMangas();
+        model.addAttribute("mangas", listMangas);
+        session.setAttribute("mangas", listMangas);
+        return "caracteristiques";
+    }
+
+    @GetMapping("/stocks")
+    public String modifStocksMangas(Model model , HttpSession session) {
+        List<Manga> listMangas = service.listMangas();
+        model.addAttribute("mangas", listMangas);
+        session.setAttribute("mangas", listMangas);
+        return "stocks";
+    }
+
+    @GetMapping("/form")
+    public String formulaire(Model model , HttpSession session) {
+        List<Manga> listMangas = service.listMangas();
+        model.addAttribute("mangas", listMangas);
+        session.setAttribute("mangas", listMangas);
+        return "formulaire";
+    }
+
 }

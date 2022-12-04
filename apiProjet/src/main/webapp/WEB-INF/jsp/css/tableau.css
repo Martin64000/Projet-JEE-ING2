@@ -1,0 +1,13 @@
+.centre table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
+tr, td, th {
+    border: none;
+}
+
+.fond {
+    background-color: #e17055;
+}

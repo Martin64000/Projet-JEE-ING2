@@ -5,14 +5,16 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="css/Header.css">
-        <link rel="stylesheet" type="text/css" href="css/accueil.css">
-        <link rel="stylesheet" type="text/css" href="css/profil.css">
-        <link rel="stylesheet" type="text/css" href="css/menuDeroulant.css">
-        <title>Test</title>
+        <style type="text/css">
+            <%@ include file="css/Header.css" %>
+            <%@ include file="css/accueil.css" %>
+            <%@ include file="css/profil.css" %>
+            <%@ include file="css/menuDeroulant.css" %>
+        </style>
+        <title>Home</title>
     </head>
     <body>
         <%@ include file="menu.jsp" %>
-        <p>Bienvenue sur mon site !</p>
+        <p>Bienvenue sur notre site !</p>
     </body>
 </html>

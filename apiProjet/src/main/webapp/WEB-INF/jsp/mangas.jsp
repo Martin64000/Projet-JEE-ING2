@@ -5,11 +5,14 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="css/Header.css">
-  <link rel="stylesheet" type="text/css" href="css/accueil.css">
-  <link rel="stylesheet" type="text/css" href="css/profil.css">
-  <link rel="stylesheet" type="text/css" href="css/menuDeroulant.css">
-  <title>Test</title>
+  <style type="text/css">
+    <%@ include file="css/Header.css" %>
+    <%@ include file="css/accueil.css" %>
+    <%@ include file="css/profil.css" %>
+    <%@ include file="css/menuDeroulant.css" %>
+    <%@ include file="css/boutique.css" %>
+  </style>
+  <title>Nos mangas</title>
 </head>
 <body>
   <%@ include file="menu.jsp" %>
@@ -25,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      <c:if test="${pageScope.mangas} == null " var="booleen">
+      <c:if test="${pageScope.mangas} == null" var="booleen">
         <tr>
           <td colspan="3">Aucun mangas en base de données</td>
         </tr>
