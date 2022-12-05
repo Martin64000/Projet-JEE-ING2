@@ -1,0 +1,164 @@
+/* Retirer les pastilles avant les items des listes */
+.profil ul {
+    list-style: none;
+  }
+  
+  .profil  a {
+    color: #ff9a26;
+    font-size: 32px;
+    text-decoration: none;
+    
+  }
+  
+  /* Place notre profil */
+  .profil-label,
+  .profil-cb {
+    cursor: pointer;
+    appearance: none;
+    position: fixed;
+    height: 32px;
+    width: 32px;
+    top: 20px;
+    right: 30px;
+    z-index: 4;
+  }
+  
+  /* Place le coté déroulant du profil */
+  .profil-nav {
+    position: fixed;
+    padding-right: 20px;
+    top: 0px;
+    right: 0px;
+    max-width: 300px;
+    padding-top: 50px;
+    text-align: right;  
+    background: grey;
+    z-index: 2;
+    transform: translateX(100%);
+    transition: transform 0.5s linear;
+  }
+  
+  /* traite le style des sous menu */
+  .profil-item :hover{
+    border-top: 1px solid #ccc;
+    font-style: italic;
+  }
+  
+  /*  Deroule le profil lors la checkbox est valide */
+  .profil-cb:checked ~ .profil-nav {
+    transform: translateX(0);
+  }
+  
+  /* correspond a notre page creer avec le css pour désactiver le profil lorsque l'on clique sur cette page */
+  .profil-cote {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* traite l'affichage de la lettre correspondant à la premiere lettre de l'identifiant */
+  .letter {
+    position: relative;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 37px;
+    right:  -10px;
+    top: -5px;
+
+}
+
+/* traite la checkbox que l'on place sous notre affichage du profil */
+.profil-cb {
+    background-color: grey;
+    z-index: 1;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    right:  10px;
+    top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.profil {
+    position: absolute;
+    right:  10px;
+    top: 5px;
+    z-index: 1; 
+    background-color: darkgrey;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.profil a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.identifiant {
+    position: relative;
+    right: 28px;
+    bottom: 11px;
+}
+
+.lettre {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 37px;
+    
+}
+
+.profil > .identifiant > .sousIdentifiant > a {
+    padding: 20px 30 px;
+    color: aliceblue;
+}
+
+.profil  .lettre:hover .sousIdentifiant {
+    display: inline-block ;
+    position: absolute;
+    z-index: 2;
+    right: 400px;
+    background-color: blue;
+}
+
+.sousIdentifiant {
+    display: none;
+}
+
+.sousIdentifiant > li {
+    position: relative;
+}
+
+.profil::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.profil > .sousIdentifiant > li > a {
+    padding: 20px 30px;
+    color: darkgray;
+
+}
+
+.sousIdentifiant{
+    padding: 15px 30px;
+    font-size: 13px;
+    color: brown;
+    width: 200px;
+}
