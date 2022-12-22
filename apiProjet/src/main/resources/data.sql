@@ -9,3 +9,14 @@ INSERT INTO mangas (title, author, number, gender, editor, stock) VALUES
   ('Naruto', 'Masashi Kishimoto', '01', 'Shonnen', 'Kana', '10'),
   ('Naruto', 'Masashi Kishimoto', '02', 'Shonnen', 'Kana', '10'),
   ('Naruto', 'Masashi Kishimoto', '03', 'Shonnen', 'Kana', '10');
+
+INSERT INTO role (type) VALUES
+    ('User'),
+    ('Administrator'),
+    ('Moderator');
+
+INSERT INTO user (username, password, role) VALUES
+('root', 'root', '1'),
+('hugo', 'mdp', '0'),
+('moderateur', 'moderateur', '2');
+
