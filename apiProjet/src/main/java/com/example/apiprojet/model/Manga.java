@@ -27,4 +27,7 @@ public class Manga {
 
     @Column(name = "editor")
     private String editor;
+
+    @Column
+    private int stock;
 }
