@@ -11,7 +11,6 @@
     <%@ include file="css/profil.css" %>
     <%@ include file="css/menuDeroulant.css" %>
     <%@ include file="css/boutique.css" %>
-    <%@ include file="css/formulaire.css" %>
   </style>
   <title>Nos mangas</title>
 </head>

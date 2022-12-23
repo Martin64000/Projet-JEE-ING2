@@ -11,7 +11,6 @@
     <%@ include file="css/profil.css" %>
     <%@ include file="css/menuDeroulant.css" %>
     <%@ include file="css/boutique.css" %>
-    <%@ include file="css/formulaire.css" %>
   </style>
   <title>Nos mangas</title>
 </head>
@@ -35,7 +34,6 @@
     <th>Ajouter</th>
   </tr>
   </thead>
-  <body>
   <c:if test="${sessionScope.searchMangas.size() == 0}" var="booleen">
     <tr>
       <td colspan="6">Aucun manga correspondant</td>

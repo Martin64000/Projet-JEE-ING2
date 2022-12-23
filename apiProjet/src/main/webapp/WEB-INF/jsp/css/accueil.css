@@ -26,21 +26,28 @@ h3 {
 
 }
 
-/* CSS FOOTER  */
-
-#fo{
-  margin: 0;
-  padding: 0;
+.home {
+  padding-left: 250px;
+  padding-right: 250px;
+  background-color: white;
+  color: black;
   text-align: center;
-  background-color: #B8B0B0;
-  height: 60px;
-  width: 100%;
-  position:relative;
 }
 
-#fo p {
-  color: black;
-  font-weight: bold;
-  position: relative;
-  top: 18px;
+.element{
+  transition: all 0.25s ease-in-out;
+}
+
+.element{
+  background-image: linear-gradient(90deg, white, grey);
+}
+
+.home{
+  background-image: linear-gradient(90deg, white, grey);
+}
+
+.home{
+  background-color: grey;
+  box-shadow: inset 150px 0 75px -75px white;
+  margin-top: 10px;
 }
