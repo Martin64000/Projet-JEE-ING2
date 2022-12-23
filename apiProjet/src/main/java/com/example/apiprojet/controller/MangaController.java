@@ -36,6 +36,14 @@ public class MangaController {
         return "mangas";
     }
 
+    @GetMapping("/listModerator")
+    public String listModerator(Model model , HttpSession session) {
+        List<User> listUser = userService.findByRole("Moderator");
+        model.addAttribute("searchModerator", listUser);
+        session.setAttribute("searchModerator", listUser);
+        return "findModerator";
+    }
+
     @GetMapping("/searchMangas")
     public String searchManga() {
         return "rechercheManga";

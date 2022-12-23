@@ -11,18 +11,14 @@
     background: #fff;
     border-radius: 3px;
 }
-.box h3 strong {
-    color: #5260ad;
-    font-weight: 900;
-}
 
 .page_central {
     font-family: Montserrat, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 95%;
-    margin-left: 5%;
+    width: 100%;
+    background-color: #808080;
     background-image: url("../img/fond2.jpg");
 }
 
@@ -30,11 +26,11 @@
     width: 500px;
     height: auto;
     padding: 25px;
-    background: #fff;
+    background-color: #fff;
     border-radius: 3px;
 }
 .box h3 strong {
-    color: #5260ad;
+    color: #762222;
     font-weight: 900;
 }
 .formBloc h3 {
@@ -60,6 +56,7 @@
 }
 .formBloc .formGroupe input {
     display: block;
+    width: 100%;
     padding: 10px 0px;
     border: none;
     outline: none;
@@ -70,15 +67,19 @@
     transition: 0.4s ease-out;
 }
 
+.formGroupe:nth-child(4) {
+    margin-bottom: 65px;
+    justify-content: center;
+}
 .formBloc .formGroupe .buttonSub {
     display: block;
     width: auto;
     padding: 15px 60px;
-    border: 3px solid #8b97d7;
+    border: 3px solid #762222;
     border-radius: 999px;
-    background-image: linear-gradient(to right, transparent 50%, #5260ad 50%, #8b97d7);
+    background-image: linear-gradient(to right, transparent 50%, #5260ad 50%, #762222);
     background-size: 200%;
-    color: #8b97d7;
+    color: #762222;
     font-size: 24px;
     font-weight: 500;
     cursor: pointer;
@@ -91,7 +92,7 @@
 }
 
 .formBloc .modifidentifiant a {
-    color: #8b97d7;
+    color: #762222;
     font-size: 16px;
     font-weight: 400;
     text-decoration: none;
@@ -99,9 +100,8 @@
     border-bottom: 2px solid transparent;
 }
 .formBloc .modifidentifiant a:hover {
-    border-bottom-color: #8b97d7;
+    border-bottom-color: #762222;
 }
-
 
 /* Animation */
 
@@ -114,12 +114,12 @@
 .formBloc .formGroupe.animation label {
     top: 0px;
     transform: translateY(-100%);
-    color: #8b97d7;
+    color: #762222;
 }
 
 .formBloc .formGroupe:focus-within input,
 .formBloc .formGroupe.animation input {
-    border-bottom-color: #8b97d7;
+    border-bottom-color: #762222;
 }
 
 

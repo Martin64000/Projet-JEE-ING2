@@ -29,4 +29,6 @@ public class UserService {
     public void saveUser(User user) {
         userRepository.save(user);
     }
+
+    public List<User> findByRole(String type) { return userRepository.findUserByRoleType(type);}
 }
