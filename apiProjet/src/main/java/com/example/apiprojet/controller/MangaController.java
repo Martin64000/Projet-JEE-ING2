@@ -36,6 +36,21 @@ public class MangaController {
         return "mangas";
     }
 
+    @GetMapping("/searchMangas")
+    public String searchManga() {
+        return "rechercheManga";
+    }
+
+    @PostMapping("/searchMangas")
+    public String listMangaSearch(Model model , HttpSession session, @RequestParam String search) {
+        List<Manga> listMangas = mangaService.listMangas();
+        List<Manga> listMangasSearch = mangaService.searchManga(search, search);
+        model.addAttribute("mangas", listMangas);
+        session.setAttribute("mangas", listMangas);
+        session.setAttribute("searchMangas", listMangasSearch);
+        return "rechercheManga";
+    }
+
     @GetMapping("/caracteristiques")
     public String modifMangas(Model model , HttpSession session) {
         List<Manga> listMangas = mangaService.listMangas();
@@ -63,7 +78,8 @@ public class MangaController {
     @GetMapping("/cart/{id}")
     public String panier(@PathVariable final Long id, Model model, HttpSession session) {
         Optional<User> user = userService.getUser(id);
-        Map<String, Manga> cart = user.get().getCart();
+        List<Manga> cart;
+        cart = user.map(User::getCart).orElse(null);
         model.addAttribute("panier", cart);
         session.setAttribute("panier", cart);
         return "panier";
@@ -92,8 +108,8 @@ public class MangaController {
     @GetMapping("/updateManga/{id}")
     public String updateM(Model model , HttpSession session, @PathVariable final Long id) {
         Optional<Manga> manga = mangaService.getManga(id);
-        model.addAttribute("mangas", manga);
-        session.setAttribute("mangas", manga);
+        model.addAttribute("updateMangas", manga);
+        session.setAttribute("updateMangas", manga);
         return "formUpdateManga";
     }
 
@@ -122,6 +138,34 @@ public class MangaController {
             mangaService.deleteManga(id);
         }
         return "redirect:/caracteristiques";
+    }
+
+    @GetMapping("/deleteFromCart/{id}/{index}")
+    public String deleteFromCart(@PathVariable final Long id, @PathVariable int index, HttpSession session) {
+        Optional<User> user = userService.getUser(id);
+        if (user.isPresent()) {
+            Manga m = user.get().getCart().get(index);
+            user.get().getCart().remove(index);
+            m.setStock(m.getStock() + 1);
+            mangaService.saveManga(m);
+            session.setAttribute("user", user.get());
+            userService.saveUser(user.get());
+        }
+        return "redirect:/cart/" + id;
+    }
+
+    @GetMapping("/addToCart/{userId}/{mangaId}")
+    public String addToCart(@PathVariable final Long userId, @PathVariable final Long mangaId, HttpSession session) {
+        Optional<User> u = userService.getUser(userId);
+        Optional<Manga> m = mangaService.getManga(mangaId);
+        if (u.isPresent() && m.isPresent()) {
+            u.get().getCart().add(m.get());
+            session.setAttribute("user", u.get());
+            userService.saveUser(u.get());
+            m.get().setStock(m.get().getStock() - 1);
+            mangaService.saveManga(m.get());
+        }
+        return "redirect:/cart/" + userId;
     }
 
 

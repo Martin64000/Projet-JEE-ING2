@@ -18,13 +18,13 @@
     <%@ include file="menu.jsp" %>
     <h2 class="h2">Modification des mangas</h2>
 
-    <form action="/update/<c:out value='${sessionScope.mangas.get().id}'/>?id=true" method="post" onsubmit="return validateForm()">
+    <form action="/update/<c:out value='${sessionScope.updateMangas.get().id}'/>?id=true" method="post" onsubmit="return validateForm()">
       <label for="title">Titre:</label><br>
-      <input type="text" id="title" name="title" placeholder="<c:out value='${sessionScope.mangas.get().title}'/>" required><br>
+      <input type="text" id="title" name="title" placeholder="<c:out value='${sessionScope.updateMangas.get().title}'/>" required><br>
       <label for="author">Auteur:</label><br>
-      <input type="text" id="author" name="author" placeholder="<c:out value='${sessionScope.mangas.get().author}'/>" required><br>
+      <input type="text" id="author" name="author" placeholder="<c:out value='${sessionScope.updateMangas.get().author}'/>" required><br>
       <label for="number">Numéro de tome:</label><br>
-      <input type="number" id="number" name="number" min="1" placeholder="<c:out value='${sessionScope.mangas.get().number}'/>" required><br>
+      <input type="number" id="number" name="number" min="1" placeholder="<c:out value='${sessionScope.updateMangas.get().number}'/>" required><br>
       <label for="gender">Genre:</label><br>
       <select id="gender" name="gender" required>
         <option value="">Sélectionnez un genre</option>
@@ -35,7 +35,7 @@
         <option value="Furyo">Furyo</option>
       </select><br>
       <label for="editor">Editeur :</label><br>
-      <input id="editor" name="editor" placeholder="<c:out value='${sessionScope.mangas.get().editor}'/>" required><br><br>
+      <input id="editor" name="editor" placeholder="<c:out value='${sessionScope.updateMangas.get().editor}'/>" required><br><br>
       <input type="submit" value="Modifier le manga">
     </form>
 

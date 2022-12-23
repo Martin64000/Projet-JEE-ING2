@@ -60,7 +60,6 @@
 }
 .formBloc .formGroupe input {
     display: block;
-    width: 100%;
     padding: 10px 0px;
     border: none;
     outline: none;
@@ -71,10 +70,6 @@
     transition: 0.4s ease-out;
 }
 
-.formGroupe:nth-child(4) {
-    margin-bottom: 65px;
-    justify-content: center;
-}
 .formBloc .formGroupe .buttonSub {
     display: block;
     width: auto;
@@ -125,7 +120,7 @@
 .formBloc .formGroupe:focus-within input,
 .formBloc .formGroupe.animation input {
     border-bottom-color: #8b97d7;
-}   
+}
 
 
 .action-button {

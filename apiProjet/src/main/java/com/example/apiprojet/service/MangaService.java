@@ -22,8 +22,8 @@ public class MangaService {
         return mangaRepository.findById(id);
     }
 
-    public Manga getMangaByTitle(String title) {
-        return mangaRepository.findMangaByTitle(title);
+    public List<Manga> searchManga(String title, String author) {
+        return mangaRepository.findByTitleContainingOrAuthorContaining(title, author);
     }
 
     public void deleteManga(final Long id) {
