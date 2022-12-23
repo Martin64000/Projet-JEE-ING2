@@ -3,6 +3,11 @@
     pageEncoding="UTF-8"%>
 
 
+<c:if test="${sessionScope.user.id == null}" var="booleen">
+	<c:redirect url="/signin"/>
+</c:if>
+
+
 <header>
 	<c:if test="${sessionScope.user.id == null}" var="booleen">
 		<a href="/signin" >
@@ -21,19 +26,22 @@
 	<div id="banner1"><h2>Librairie Ohara</h2></div>
 	<nav class="CentralMenu">
 		<ul class="MenuDeroulant">
-			<li><a href="/?id=true">Accueil</a></li>
-			<li><a href="/mangas?id=true">Notre Boutique </a>
+			<li><a href="/">Accueil</a></li>
+			<li><a href="/mangas">Notre Boutique </a>
 				<ul class="SousMenu" >
-					<li><a href="/mangas?id=true">Mangas</a></li>
-					<li><a href="/searchMangas?id=true">Rechercher un manga</a></li>
+					<li><a href="/mangas">Mangas</a></li>
+					<li><a href="/searchMangas">Rechercher un manga</a></li>
 				</ul>
 			</li>
 			<li><a href="/cart/<c:out value='${sessionScope.user.id}'/>?id=true">Votre Panier</a></li>
-			<c:if test="${sessionScope.user.role.type != 'User'}" var = "booleen">
-				<li><a href="/caracteristiques?id=true">Gestion des caractéristiques produits</a></li>
-				<li><a href="/stocks?id=true">Gestion des stocks</a></li>
+			<c:if test="${sessionScope.user.role.type == 'Moderator'}" var = "booleen">
+				<li><a href="/caracteristiques">Gestion des caractéristiques produits</a></li>
+				<li><a href="/stocks">Gestion des stocks</a></li>
 			</c:if>
-			<li><a href="/form?id=true">Nous contacter</a></li>
+			<c:if test="${sessionScope.user.role.type == 'Administrator'}" var = "booleen">
+				<li><a href="/listModerator">Gestion des modérateurs</a></li>
+			</c:if>
+			<li><a href="/form">Nous contacter</a></li>
 		</ul>
 	</nav>
 	<div id="banner2"></div>
