@@ -1,6 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="taglibs.jsp" %>
-
 <!DOCTYPE html>
 <html lang="FR">
 <head>
@@ -20,46 +19,46 @@
 <!--Bannière du site-->
 <nav class="page_central">
   <div class="box">
-    <form action="#" class="formBloc" method="POST">
+    <form action="/form" class="formBloc" method="GET">
       <h3><strong>Contactez-nous</strong></h3>
       <div class="formGroupe" id="animeFixe">
-        <label for="utilisateur">Date du contact</label>
+        <label>Date du contact</label>
         <input type="date" name="date" required maxlength="16">
       </div>
       <div class="formGroupe">
-        <label for="utilisateur">Nom</label>
+        <label>Nom</label>
         <input type="text" name="nom" required maxlength="16">
       </div>
       <div class="formGroupe">
-        <label for="utilisateur">Prénom</label>
+        <label>Prénom</label>
         <input type="text" name="prenom" required maxlength="16">
       </div>
       <div class="formGroupe" id="animeFixe">
-        <label for="utilisateur">Date de Naissance</label>
+        <label>Date de Naissance</label>
         <input type="date" name="date" required maxlength="16">
       </div>
       <div class="formGroupe">
-        <label for="utilisateur">E-mail</label>
-        <input type="email" pattern=".+@cy-tech.fr" name="email" required maxlength="16">
+        <label>E-mail</label>
+        <input type="email" pattern=".+@cy-tech.fr" name="email" required maxlength="32">
       </div>
       <div class="formGroupe">
-        <label for="utilisateur">Genre</label>
+        <label>Genre</label>
         <input type="text" name="genre" required maxlength="16">
       </div>
       <div class="formGroupe">
-        <label for="utilisateur">Fonction</label>
+        <label>Fonction</label>
         <input type="text" name="fonction" required maxlength="16">
       </div>
       <div class="formGroupe">
-        <label for="utilisateur">Sujet</label>
+        <label>Sujet</label>
         <input type="text" name="sujet" required maxlength="16">
       </div>
       <div class="formGroupe">
-        <label for="utilisateur">Contenu</label>
+        <label>Contenu</label>
         <input type="text" name="fonction" required maxlength="16">
       </div>
       <div class="formGroupe">
-        <input type="submit" value="Envoyer le formulaire" class="buttonSub">
+        <input type="submit" value="Envoyer le formulaire" onclick="popUp()" class="buttonSub">
       </div>
     </form>
   </div>
@@ -67,6 +66,9 @@
 
 <script>
   <%@ include file="js/formulaire.js"%>
+  async function popUp() {
+    alert("Merci pour votre réponse ! Nous vous tiendrons informé quant à votre demande");
+  }
 </script>
 </body>
 </html>
