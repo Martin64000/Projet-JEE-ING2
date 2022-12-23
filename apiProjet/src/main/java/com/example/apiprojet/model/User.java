@@ -3,7 +3,8 @@ package com.example.apiprojet.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +26,5 @@ public class User {
     private Role role;
 
     @OneToMany
-    @JoinColumn(name = "cart")
-    private Map<String, Manga> cart;
+    private List<Manga> cart = new ArrayList<>();
 }

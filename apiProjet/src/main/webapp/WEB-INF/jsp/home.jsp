@@ -11,7 +11,7 @@
             <%@ include file="css/profil.css" %>
             <%@ include file="css/menuDeroulant.css" %>
         </style>
-        <title>Home</title>
+        <title>Accueil</title>
     </head>
     <body>
         <%@ include file="menu.jsp" %>

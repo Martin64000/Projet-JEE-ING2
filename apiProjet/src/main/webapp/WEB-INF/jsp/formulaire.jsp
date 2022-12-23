@@ -64,11 +64,9 @@
     </form>
   </div>
 </nav>
-<!--
-Bas de page du site
-<script src="js/profilDeroulant.js"></script>
-<script src="js/menuDeroulant.js"></script>
-<script src="js/formulaire.js"></script>
--->
+
+<script>
+  <%@ include file="js/formulaire.js"%>
+</script>
 </body>
 </html>

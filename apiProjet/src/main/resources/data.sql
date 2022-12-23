@@ -16,7 +16,7 @@ INSERT INTO role (type) VALUES
     ('Moderator');
 
 INSERT INTO user (username, password, role) VALUES
-('root', 'root', '1'),
-('hugo', 'mdp', '0'),
-('moderateur', 'moderateur', '2');
+('root', 'root', '2'),
+('hugo', 'mdp', '1'),
+('moderateur', 'moderateur', '3');
 

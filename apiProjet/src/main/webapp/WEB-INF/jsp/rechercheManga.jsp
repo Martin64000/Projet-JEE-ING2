@@ -17,6 +17,12 @@
 </head>
 <body>
 <%@ include file="menu.jsp" %>
+<div class="search">
+  <form method="POST" action="/searchMangas">
+    <input class="searchInput" type="text" id="search" name="search" required maxlength="16" placeholder="Entrer votre recherche">
+    <input type="submit" value="Rechercher" class="searchInput">
+  </form>
+</div>
 <h2 class="h2">Liste des mangas</h2>
 <table class="table">
   <thead>
@@ -29,13 +35,13 @@
     <th>Ajouter</th>
   </tr>
   </thead>
-  <tbody>
-  <c:if test="${sessionScope.mangas.size() == 0}" var="booleen">
+  <body>
+  <c:if test="${sessionScope.searchMangas.size() == 0}" var="booleen">
     <tr>
-      <td colspan="3">Aucun mangas en base de données</td>
+      <td colspan="6">Aucun manga correspondant</td>
     </tr>
   </c:if>
-  <c:forEach items="${sessionScope.mangas}" var="m">
+  <c:forEach items="${sessionScope.searchMangas}" var="m">
     <tr>
       <td><span> <c:out value="${m.title}"/> </span></td>
       <td><span> <c:out value="${m.author}"/> </span></td>
@@ -45,7 +51,7 @@
       <td><span> <a href="/addToCart/<c:out value='${sessionScope.user.id}'/>/<c:out value='${m.id}'/>"><button>Ajouter au panier</button></a></span></td>
     </tr>
   </c:forEach>
-  </tbody>
+  </body>
 </table>
 </body>
 </html>

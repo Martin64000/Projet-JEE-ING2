@@ -22,11 +22,15 @@ public class MangaService {
         return mangaRepository.findById(id);
     }
 
+    public List<Manga> searchManga(String title, String author) {
+        return mangaRepository.findByTitleContainingOrAuthorContaining(title, author);
+    }
+
     public void deleteManga(final Long id) {
         mangaRepository.deleteById(id);
     }
 
-    public Manga saveManga(Manga manga) {
-        return mangaRepository.save(manga);
+    public void saveManga(Manga manga) {
+        mangaRepository.save(manga);
     }
 }

@@ -1,7 +1,9 @@
 package com.example.apiprojet.controller;
 
 import com.example.apiprojet.model.Manga;
+import com.example.apiprojet.model.User;
 import com.example.apiprojet.service.MangaService;
+import com.example.apiprojet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,10 @@ import java.util.Optional;
 public class MangaController {
 
     @Autowired
-    private MangaService service;
+    private MangaService mangaService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public String home() {
@@ -25,15 +30,30 @@ public class MangaController {
 
     @GetMapping("/mangas")
     public String listManga(Model model , HttpSession session) {
-        List<Manga> listMangas = service.listMangas();
+        List<Manga> listMangas = mangaService.listMangas();
         model.addAttribute("mangas", listMangas);
         session.setAttribute("mangas", listMangas);
         return "mangas";
     }
 
+    @GetMapping("/searchMangas")
+    public String searchManga() {
+        return "rechercheManga";
+    }
+
+    @PostMapping("/searchMangas")
+    public String listMangaSearch(Model model , HttpSession session, @RequestParam String search) {
+        List<Manga> listMangas = mangaService.listMangas();
+        List<Manga> listMangasSearch = mangaService.searchManga(search, search);
+        model.addAttribute("mangas", listMangas);
+        session.setAttribute("mangas", listMangas);
+        session.setAttribute("searchMangas", listMangasSearch);
+        return "rechercheManga";
+    }
+
     @GetMapping("/caracteristiques")
     public String modifMangas(Model model , HttpSession session) {
-        List<Manga> listMangas = service.listMangas();
+        List<Manga> listMangas = mangaService.listMangas();
         model.addAttribute("mangas", listMangas);
         session.setAttribute("mangas", listMangas);
         return "caracteristiques";
@@ -41,7 +61,7 @@ public class MangaController {
 
     @GetMapping("/stocks")
     public String modifStocksMangas(Model model , HttpSession session) {
-        List<Manga> listMangas = service.listMangas();
+        List<Manga> listMangas = mangaService.listMangas();
         model.addAttribute("mangas", listMangas);
         session.setAttribute("mangas", listMangas);
         return "stocks";
@@ -49,17 +69,47 @@ public class MangaController {
 
     @GetMapping("/form")
     public String formulaire(Model model , HttpSession session) {
-        List<Manga> listMangas = service.listMangas();
+        List<Manga> listMangas = mangaService.listMangas();
         model.addAttribute("mangas", listMangas);
         session.setAttribute("mangas", listMangas);
         return "formulaire";
     }
 
+    @GetMapping("/cart/{id}")
+    public String panier(@PathVariable final Long id, Model model, HttpSession session) {
+        Optional<User> user = userService.getUser(id);
+        List<Manga> cart;
+        cart = user.map(User::getCart).orElse(null);
+        model.addAttribute("panier", cart);
+        session.setAttribute("panier", cart);
+        return "panier";
+    }
+
+    @GetMapping("/signin")
+    public String signIn(HttpSession session, Model model) {
+        List<User> user = userService.listUsers();
+        model.addAttribute("listUser", user);
+        session.setAttribute("listUser", user);
+        return "connexion";
+    }
+
+    @PostMapping("/signinVerif")
+    public String verifSignIn(@RequestParam Map<String, String> infos, HttpSession session) {
+        List<User> listUser = userService.listUsers();
+        for (User user : listUser) {
+            if (user.getUsername().equals(infos.get("identifiant")) && user.getPassword().equals(infos.get("mdp"))) {
+                session.setAttribute("user", user);
+                return "redirect:/";
+            }
+        }
+        return "redirect:/signin";
+    }
+
     @GetMapping("/updateManga/{id}")
     public String updateM(Model model , HttpSession session, @PathVariable final Long id) {
-        Optional<Manga> manga = service.getManga(id);
-        model.addAttribute("mangas", manga);
-        session.setAttribute("mangas", manga);
+        Optional<Manga> manga = mangaService.getManga(id);
+        model.addAttribute("updateMangas", manga);
+        session.setAttribute("updateMangas", manga);
         return "formUpdateManga";
     }
 
@@ -77,23 +127,51 @@ public class MangaController {
         createdManga.setGender(stringParams.get("gender"));
         createdManga.setEditor(stringParams.get("editor"));
         createdManga.setStock(stock);
-        service.saveManga(createdManga);
+        mangaService.saveManga(createdManga);
         return "redirect:/caracteristiques";
     }
 
     @GetMapping("/deleteManga/{id}")
     public String deleteManga(@PathVariable final Long id) {
-        Optional<Manga> m = service.getManga(id);
+        Optional<Manga> m = mangaService.getManga(id);
         if(m.isPresent()) {
-            service.deleteManga(id);
+            mangaService.deleteManga(id);
         }
         return "redirect:/caracteristiques";
+    }
+
+    @GetMapping("/deleteFromCart/{id}/{index}")
+    public String deleteFromCart(@PathVariable final Long id, @PathVariable int index, HttpSession session) {
+        Optional<User> user = userService.getUser(id);
+        if (user.isPresent()) {
+            Manga m = user.get().getCart().get(index);
+            user.get().getCart().remove(index);
+            m.setStock(m.getStock() + 1);
+            mangaService.saveManga(m);
+            session.setAttribute("user", user.get());
+            userService.saveUser(user.get());
+        }
+        return "redirect:/cart/" + id;
+    }
+
+    @GetMapping("/addToCart/{userId}/{mangaId}")
+    public String addToCart(@PathVariable final Long userId, @PathVariable final Long mangaId, HttpSession session) {
+        Optional<User> u = userService.getUser(userId);
+        Optional<Manga> m = mangaService.getManga(mangaId);
+        if (u.isPresent() && m.isPresent()) {
+            u.get().getCart().add(m.get());
+            session.setAttribute("user", u.get());
+            userService.saveUser(u.get());
+            m.get().setStock(m.get().getStock() - 1);
+            mangaService.saveManga(m.get());
+        }
+        return "redirect:/cart/" + userId;
     }
 
 
     @PostMapping("/update/{id}")
     public String update(@PathVariable("id") final Long id, @RequestParam Map<String, String> params, @RequestParam("number") int number) {
-        Optional<Manga> m = service.getManga(id);
+        Optional<Manga> m = mangaService.getManga(id);
         if(m.isPresent()) {
             Manga currentManga = m.get();
 
@@ -116,7 +194,7 @@ public class MangaController {
             if(editor != null) {
                 currentManga.setEditor(editor);
             }
-            service.saveManga(currentManga);
+            mangaService.saveManga(currentManga);
         }
         return "redirect:/caracteristiques";
     }
