@@ -4,10 +4,12 @@ Pour lancer l'application, il y a 2 possibilités :
  - faire clique droit sur apiProjetApplication.java et faire Run.
  - ouvrir son navigateure et taper localhost:9000/
  ou
- - lancer le .jar
+ - lancer le .jar seulement notre .jar n'est pas fonctionnel
  
  Pour se connecter : il y a 3 comptes :
  - root root qui est un administrateur qui gère ses modérateurs
  - moderateur moderateur qui est un modérateur et qui gère les stocks des mangas ainsi que les caractérstiques des mangas
  - hugo mdp qui est un utilistateur lambda qui peut seulement acheter des mangas
+ 
+
  
