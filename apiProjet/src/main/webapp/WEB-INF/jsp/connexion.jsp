@@ -18,7 +18,7 @@
 <body>
 <!-- Page de depart de notre site web qui suivant nos identifiant va nous diriger vers differentes pages  -->
 <div class="box">
-  <form class="formBloc" action="/signin" method="POST">
+  <form class="formBloc" action="/signinVerif" method="POST">
     <h3><strong>Identifiez</strong>-vous</h3>
     <div class="formGroupe">
       <label for="utilisateur">Utilisateur</label>
@@ -33,8 +33,10 @@
     </div>
   </form>
 </div>
-<!--
-<script src="js/formulaire.js"></script>
--->
+
+<script>
+  <%@ include file="js/formulaire.js" %>
+</script>
+
 </body>
 </html>

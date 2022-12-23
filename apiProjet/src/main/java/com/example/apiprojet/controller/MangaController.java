@@ -77,6 +77,18 @@ public class MangaController {
         return "connexion";
     }
 
+    @PostMapping("/signinVerif")
+    public String verifSignIn(@RequestParam Map<String, String> infos, HttpSession session) {
+        List<User> listUser = userService.listUsers();
+        for (User user : listUser) {
+            if (user.getUsername().equals(infos.get("identifiant")) && user.getPassword().equals(infos.get("mdp"))) {
+                session.setAttribute("user", user);
+                return "redirect:/";
+            }
+        }
+        return "redirect:/signin";
+    }
+
     @GetMapping("/updateManga/{id}")
     public String updateM(Model model , HttpSession session, @PathVariable final Long id) {
         Optional<Manga> manga = mangaService.getManga(id);
