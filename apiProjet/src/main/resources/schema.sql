@@ -6,5 +6,6 @@ CREATE TABLE mangas (
     author VARCHAR(250) NOT NULL,
     number INTEGER NOT NULL,
     gender VARCHAR(250) NOT NULL,
-    editor VARCHAR(250) NOT NULL
+    editor VARCHAR(250) NOT NULL,
+    stock INTEGER
 );

@@ -21,4 +21,12 @@ public class MangaService {
     public Optional<Manga> getManga(Long id) {
         return mangaRepository.findById(id);
     }
+
+    public void deleteManga(final Long id) {
+        mangaRepository.deleteById(id);
+    }
+
+    public Manga saveManga(Manga manga) {
+        return mangaRepository.save(manga);
+    }
 }

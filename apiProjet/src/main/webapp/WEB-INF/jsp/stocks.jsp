@@ -42,7 +42,7 @@
             <td><span> <c:out value="${m.number}"/> </span></td>
             <td><span> <c:out value="${m.gender}"/> </span></td>
             <td><span> <c:out value="${m.editor}"/> </span></td>
-            <td><span> Stock à paramètrer </span></td>
+            <td><span> <c:out value="${m.stock}"/> </span></td>
             <td><span> <button>Recommander</button> </span></td>
         </tr>
     </c:forEach>
